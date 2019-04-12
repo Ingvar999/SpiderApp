@@ -32,7 +32,8 @@ namespace WindowsFormsApp1
         string[] sketch;
         string[][] sketches = new[]
         {
-            new[] { "dh30", "sx2", "d|-30", "sleep1000", "d-40", "sleep1000", "d)120", "sleep1000", "d)60", "sleep1000", "d)90", "sleep1000", "d--40", "sleep1000", "sx" }
+            new[] { "db", "dh30", "sx2", "d|-30", "sleep1000", "d-40", "sleep1000", "d)120", "sleep1000", "d)60", "sleep1000", "d)90", "sleep1000", "d--40", "sleep1000", "sx" },
+            new[] { "db", "dh40", "sb0", "sw0", "ss29", "sx3", "d|-50", "sleep700",  "d|50", "sleep700", "d|-50", "sleep700", "d|50", "sleep700", "db" }
         };
 
         public Form1()
@@ -92,7 +93,32 @@ namespace WindowsFormsApp1
             }
         }
 
-       void SketchHandler(string msg)
+        const int deviation = 10;
+        const int delta = 10;
+        int angle;
+        void RotateHandler(string msg)
+        {
+            if (msg == "Recieved" && angle <= 180)
+            {
+                SendMessage($"sq{deviation} {angle}");
+                angle += delta;
+            }
+            else
+            {
+                MessageHandler = PrintMessage;
+                SendMessage("sq0 0");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MessageHandler = RotateHandler;
+            angle = -180;
+            SendMessage($"sq{deviation} {angle}");
+            angle += delta;
+        }
+
+        void SketchHandler(string msg)
         {
             if (msg == "Recieved" && nextCommand != sketch.Length)
             {
