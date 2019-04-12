@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
         string[][] sketches = new[]
         {
             new[] { "db", "dh30", "sx2", "d|-30", "sleep1000", "d-40", "sleep1000", "d)120", "sleep1000", "d)60", "sleep1000", "d)90", "sleep1000", "d--40", "sleep1000", "sx" },
-            new[] { "db", "dh40", "sb0", "sw0", "ss29", "sx3", "d|-50", "sleep700",  "d|50", "sleep700", "d|-50", "sleep700", "d|50", "sleep700", "db" }
+            new[] { "db", "dh40", "sb0", "sw0", "ss31", "sx3", "d|-50", "sleep200",  "d|50", "sleep200", "d|-50", "sleep200", "d|50", "sleep200", "db" }
         };
 
         public Form1()
@@ -93,20 +93,20 @@ namespace WindowsFormsApp1
             }
         }
 
-        const int deviation = 10;
-        const int delta = 10;
+        const int deviation = 12;
+        const int delta = 30;
         int angle;
         void RotateHandler(string msg)
         {
             if (msg == "Recieved" && angle <= 180)
             {
-                SendMessage($"sq{deviation} {angle}");
+                SendMessage($"sp{deviation} {angle}");
                 angle += delta;
             }
             else
             {
                 MessageHandler = PrintMessage;
-                SendMessage("sq0 0");
+                SendMessage("sp0 0");
             }
         }
 
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
         {
             MessageHandler = RotateHandler;
             angle = -180;
-            SendMessage($"sq{deviation} {angle}");
+            SendMessage($"sp{deviation} {angle}");
             angle += delta;
         }
 
@@ -162,7 +162,7 @@ namespace WindowsFormsApp1
         void Connected()
         {
             richTextBox1.AppendText("Connected\n");
-            textBox1.Enabled = legsBox.Enabled = button4.Enabled = button5.Enabled = true;
+            textBox1.Enabled = legsBox.Enabled = button4.Enabled = button5.Enabled = sketchBox.Enabled = button7.Enabled = true;
             textBox1.Focus();
         }
 
