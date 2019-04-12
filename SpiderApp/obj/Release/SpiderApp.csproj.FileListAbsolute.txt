@@ -1,0 +1,7 @@
+D:\git\SpiderApp\SpiderApp\bin\Release\SpiderApp.exe.config
+D:\git\SpiderApp\SpiderApp\bin\Release\SpiderApp.exe
+D:\git\SpiderApp\SpiderApp\bin\Release\SpiderApp.pdb
+D:\git\SpiderApp\SpiderApp\obj\Release\SpiderApp.csprojAssemblyReference.cache
+D:\git\SpiderApp\SpiderApp\obj\Release\SpiderApp.csproj.CoreCompileInputs.cache
+D:\git\SpiderApp\SpiderApp\obj\Release\SpiderApp.exe
+D:\git\SpiderApp\SpiderApp\obj\Release\SpiderApp.pdb
