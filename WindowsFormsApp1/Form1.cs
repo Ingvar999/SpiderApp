@@ -32,8 +32,11 @@ namespace WindowsFormsApp1
         string[] sketch;
         string[][] sketches = new[]
         {
-            new[] { "db", "dh30", "sx2", "d|-30", "sleep1000", "d-40", "sleep1000", "d)120", "sleep1000", "d)60", "sleep1000", "d)90", "sleep1000", "d--40", "sleep1000", "sx" },
-            new[] { "db", "dh40", "sb0", "sw0", "ss31", "sx3", "d|-50", "sleep200",  "d|50", "sleep200", "d|-50", "sleep200", "d|50", "sleep200", "db" }
+            new[] { "db", "dh30", "sx2", "d|-30", "sleep1000", "d-40", "sleep1000", "d)120", "sleep1000", "d)60", "sleep1000", "d)90", "sleep1000", "d--40", "sleep1000", "db" },
+            new[] { "db", "dh70", "sb0", "sw0", "sx3", "d|-80", "d)40", "d-15", "sleep500", "ss31", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "sleep1000", "d--20", "d|40", "sleep500", "d-70", "sleep500", "d)90", "ss25", "db" },
+            new[] { "db", "dh70", "sb0", "sw0", "sx3", "d|-80", "d)40", "d-15", "sleep500", "ss31", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "sleep1000", "d-15", "d)20", "d|40", "sleep500", "d)150", "sleep500", "d)90", "d--30", "d|40", "ss25", "sx", "sw1", "dh-40", "dm10" },
+            new[] { "db", "dh40", "sb0", "sw0", "sx2", "d|-40", "sleep500", "d)40", "sleep500",  "d|35", "sleep500", "d|-20", "sleep4000", "sx", "dt-20", "sleep2000", "db" },
+            new[] { "db", "dh70", "sb0", "sw0", "ss10", "sx3", "d|-80", "sleep500", "d)40", "sleep500",  "d-50", "sleep1000", "d|50", "sleep1000", "d|-50", "sleep1000", "d|50", "sleep1000", "d|-50", "sleep1000", "db" }
         };
 
         public Form1()
@@ -94,7 +97,7 @@ namespace WindowsFormsApp1
         }
 
         const int deviation = 12;
-        const int delta = 30;
+        const int delta = 40;
         int angle;
         void RotateHandler(string msg)
         {

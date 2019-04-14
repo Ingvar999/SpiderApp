@@ -319,7 +319,10 @@
             this.sketchBox.FormattingEnabled = true;
             this.sketchBox.Items.AddRange(new object[] {
             "test",
-            "hit"});
+            "hit1",
+            "hit2",
+            "mouseClick",
+            "tea"});
             this.sketchBox.Location = new System.Drawing.Point(859, 43);
             this.sketchBox.Name = "sketchBox";
             this.sketchBox.Size = new System.Drawing.Size(121, 26);
@@ -328,7 +331,6 @@
             // 
             // button6
             // 
-            this.button6.Enabled = false;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.Location = new System.Drawing.Point(859, 187);
             this.button6.Name = "button6";
