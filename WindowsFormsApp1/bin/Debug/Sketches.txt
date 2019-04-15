@@ -1,0 +1,4 @@
+test , db , dh30 , sx2 , d|-30 , sleep1000	 , d-40 , sleep1000 , d)120 , sleep1000 , d)60 , sleep1000 , d)90 , sleep1000 , d--40 , sleep1000 , db
+hit1	 db dh70 sb0  sleep500 
+mouseClick db dh40 sb0 sw0
+teaMaking db dh70 sb0 

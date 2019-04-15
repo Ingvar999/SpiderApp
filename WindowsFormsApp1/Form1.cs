@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        const int bufferSize = 100;
+        const int bufferSize = 255;
         static byte[] buffer = new byte[bufferSize];
         static Form1 F;
         const String host = "192.168.88.1";
@@ -30,14 +31,7 @@ namespace WindowsFormsApp1
 
         int nextCommand;
         string[] sketch;
-        string[][] sketches = new[]
-        {
-            new[] { "db", "dh30", "sx2", "d|-30", "sleep1000", "d-40", "sleep1000", "d)120", "sleep1000", "d)60", "sleep1000", "d)90", "sleep1000", "d--40", "sleep1000", "db" },
-            new[] { "db", "dh70", "sb0", "sw0", "sx3", "d|-80", "d)40", "d-15", "sleep500", "ss31", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "sleep1000", "d--20", "d|40", "sleep500", "d-70", "sleep500", "d)90", "ss25", "db" },
-            new[] { "db", "dh70", "sb0", "sw0", "sx3", "d|-80", "d)40", "d-15", "sleep500", "ss31", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "d|40", "d|-40", "sleep1000", "d-15", "d)20", "d|40", "sleep500", "d)150", "sleep500", "d)90", "d--30", "d|40", "ss25", "sx", "sw1", "dh-40", "dm10" },
-            new[] { "db", "dh40", "sb0", "sw0", "sx2", "d|-40", "sleep500", "d)40", "sleep500",  "d|35", "sleep500", "d|-20", "sleep4000", "sx", "dt-20", "sleep2000", "db" },
-            new[] { "db", "dh70", "sb0", "sw0", "ss10", "sx3", "d|-80", "sleep500", "d)40", "sleep500",  "d-50", "sleep1000", "d|50", "sleep1000", "d|-50", "sleep1000", "d|50", "sleep1000", "d|-50", "sleep1000", "db" }
-        };
+        List<string[]> sketches;
 
         public Form1()
         {
@@ -121,6 +115,37 @@ namespace WindowsFormsApp1
             angle += delta;
         }
 
+        void LoadSketches()
+        {
+            StreamReader file = new StreamReader("Sketches.txt");
+            sketches = new List<string[]>();
+            sketchBox.Items.Clear();
+            sketchBox.SelectedIndex = -1;
+            while (!file.EndOfStream)
+            {
+                sketch = file.ReadLine().Split(new[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                if (sketch.Length > 1)
+                {
+                    if (sketch[0] == "*")
+                    {
+                        sketchBox.Items.Add(sketch[1]);
+                        sketchBox.SelectedIndex = sketchBox.Items.Count - 1;
+                        sketches.Add(sketch.Skip(2).ToArray());
+                    }
+                    else
+                    {
+                        sketchBox.Items.Add(sketch[0]);
+                        sketches.Add(sketch.Skip(1).ToArray());
+                    }
+                }
+            }
+            file.Close();
+            if (sketchBox.SelectedIndex == -1)
+            {
+                sketchBox.SelectedIndex = sketchBox.Items.Count - 1;
+            }
+        }
+
         void SketchHandler(string msg)
         {
             if (msg == "Recieved" && nextCommand != sketch.Length)
@@ -165,7 +190,7 @@ namespace WindowsFormsApp1
         void Connected()
         {
             richTextBox1.AppendText("Connected\n");
-            textBox1.Enabled = legsBox.Enabled = button4.Enabled = button5.Enabled = sketchBox.Enabled = button7.Enabled = true;
+            textBox1.Enabled = legsBox.Enabled = button4.Enabled = button5.Enabled = button7.Enabled = true;
             textBox1.Focus();
         }
 
@@ -204,8 +229,8 @@ namespace WindowsFormsApp1
         {
             F = this;
             legsBox.SelectedIndex = 2;
-            sketchBox.SelectedIndex = 0;
             MessageHandler = PrintMessage;
+            LoadSketches();
             Connect();
         }
 
@@ -261,6 +286,11 @@ namespace WindowsFormsApp1
         private void button6_Click(object sender, EventArgs e)
         {
             MessageHandler = PrintMessage;
+        }
+
+        private void RefreshSketches_btn_Click(object sender, EventArgs e)
+        {
+            LoadSketches();
         }
     }
 }

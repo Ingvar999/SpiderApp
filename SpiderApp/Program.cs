@@ -8,7 +8,7 @@ namespace SpiderApp
 {
     class Program
     {
-        const int bufferSize = 100; 
+        const int bufferSize = 255; 
         static byte[] buffer = new byte[bufferSize];
 
         static void Main(string[] args)

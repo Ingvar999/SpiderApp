@@ -53,6 +53,7 @@
             this.sketchBox = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.RefreshSketches_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.turnBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radiusBar)).BeginInit();
@@ -304,7 +305,7 @@
             // 
             this.button5.Enabled = false;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(859, 82);
+            this.button5.Location = new System.Drawing.Point(859, 106);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(121, 32);
             this.button5.TabIndex = 21;
@@ -314,25 +315,18 @@
             // 
             // sketchBox
             // 
-            this.sketchBox.Enabled = false;
             this.sketchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.sketchBox.FormattingEnabled = true;
-            this.sketchBox.Items.AddRange(new object[] {
-            "test",
-            "hit1",
-            "hit2",
-            "mouseClick",
-            "tea"});
-            this.sketchBox.Location = new System.Drawing.Point(859, 43);
+            this.sketchBox.Location = new System.Drawing.Point(859, 67);
             this.sketchBox.Name = "sketchBox";
             this.sketchBox.Size = new System.Drawing.Size(121, 26);
             this.sketchBox.TabIndex = 22;
-            this.sketchBox.Text = "test";
+            this.sketchBox.Text = "sketch";
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(859, 187);
+            this.button6.Location = new System.Drawing.Point(859, 211);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(121, 32);
             this.button6.TabIndex = 23;
@@ -344,7 +338,7 @@
             // 
             this.button7.Enabled = false;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(859, 125);
+            this.button7.Location = new System.Drawing.Point(859, 149);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(121, 32);
             this.button7.TabIndex = 24;
@@ -352,12 +346,24 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // RefreshSketches_btn
+            // 
+            this.RefreshSketches_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RefreshSketches_btn.Location = new System.Drawing.Point(859, 21);
+            this.RefreshSketches_btn.Name = "RefreshSketches_btn";
+            this.RefreshSketches_btn.Size = new System.Drawing.Size(121, 32);
+            this.RefreshSketches_btn.TabIndex = 25;
+            this.RefreshSketches_btn.Text = "Refresh list";
+            this.RefreshSketches_btn.UseVisualStyleBackColor = true;
+            this.RefreshSketches_btn.Click += new System.EventHandler(this.RefreshSketches_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(1001, 373);
+            this.Controls.Add(this.RefreshSketches_btn);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.sketchBox);
@@ -421,6 +427,7 @@
         private System.Windows.Forms.ComboBox sketchBox;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button RefreshSketches_btn;
     }
 }
 
