@@ -123,7 +123,7 @@ namespace WindowsFormsApp1
             sketchBox.SelectedIndex = -1;
             while (!file.EndOfStream)
             {
-                sketch = file.ReadLine().Split(new[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                sketch = file.ReadLine().Split(new string[] { " , ", ", ", " ,", ",", "\t" }, StringSplitOptions.RemoveEmptyEntries);
                 if (sketch.Length > 1)
                 {
                     if (sketch[0] == "*")
